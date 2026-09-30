@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#264c41">
+  <title>Vale do Sol · Estradas & histórias</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="regions.js" defer></script>
+  <script src="activities.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <a class="brand" href="./index.html" aria-label="Vale do Sol, início"><span class="brand-icon">☀</span><span>VALE DO SOL<small>ESTRADAS & HISTÓRIAS</small></span></a>
+      <span class="edition">UM JOGO DE BOLSO<br>DEZ LUGARES PARA SE PERDER.</span>
+      <div class="resources"><span class="coin"><i>●</i> <b id="coins">80</b><small>moedas</small></span><span class="clock"><span id="time-icon">☀</span> <b id="day">Dia 1 · Manhã</b><span class="time-track"><span id="time-progress"></span></span></span></div>
+      <button class="icon-button" id="help" aria-label="Como jogar">?</button>
+    </header>
+    <nav class="route-bar" aria-label="Destinos"><span class="route-label">PEGUE A ESTRADA <span>↗</span></span><button data-destination="farm" class="selected"><span>01</span> Vale do Sol</button><button data-destination="coast"><span>02</span> Porto Brisa</button><button data-destination="mountain"><span>03</span> Serra do Cobre</button><button data-destination="lantern"><span>04</span> Vila das Lanternas</button><button id="atlas-button" aria-label="Abrir mapa das estradas">⌁ Mapa</button></nav>
+    <div class="layout">
+      <section class="world-card" aria-label="Mapa do jogo">
+        <div class="world-top"><span><i class="location-dot"></i> <b id="location">Sua fazenda</b></span><span id="mount-status">A pé</span></div>
+        <div class="canvas-wrap"><canvas id="world" width="960" height="640" tabindex="0" aria-label="Mapa de Vale do Sol. Use WASD ou setas para andar e E para interagir."></canvas><div id="interaction" class="interaction" hidden><kbd>E</kbd><span></span></div><div class="map-caption"><span id="map-number">01 / INTERIOR</span><h1 id="map-title">Vale do Sol</h1><p id="map-description">Onde toda estrada começa.</p></div><div class="compass" aria-hidden="true">N<span>✥</span>S</div><div id="arrival" aria-live="polite"></div></div>
+        <div class="world-bottom"><span><kbd>W A S D</kbd> ou <kbd>↑ ← ↓ →</kbd> caminhar</span><span><kbd>E</kbd> interagir <kbd>M</kbd> desmontar</span><button id="pause">Ⅱ Pausar</button></div>
+        <div class="touch-controls" aria-label="Controles de toque"><div class="dpad"><button data-move="up" aria-label="Andar para cima">▲</button><button data-move="left" aria-label="Andar para esquerda">◀</button><button data-move="down" aria-label="Andar para baixo">▼</button><button data-move="right" aria-label="Andar para direita">▶</button></div><div class="touch-actions"><button id="touch-interact">Interagir</button><button id="dismount">Desmontar</button></div></div>
+      </section>
+      <aside class="sidebar">
+        <section class="journal"><div class="journal-heading"><span>CADERNO DE VIAGEM</span><span id="visit-count">1 / 4</span></div><div class="postage"><span id="region-symbol">☀</span><small id="region-stamp">INTERIOR · 01</small></div><p id="region-note">Mila deixou sementes na sua mochila. O resto, você descobre pelo caminho.</p><div class="local-heading">POR AQUI</div><div id="local-activities"></div><button id="journal-map">Próxima parada <span>→</span></button></section>
+        <section class="card quest-card"><div class="card-title"><h2>Coisas para contar</h2><span id="quest-count">0/7</span></div><div id="quests"></div></section>
+        <section class="card bag-card"><div class="card-title"><h2>Nos bolsos</h2><span id="bag-count">0 itens</span></div><div id="inventory" class="inventory"></div><button class="wide subtle" id="eat">Comer maçã · passos rápidos por 45s</button></section>
+        <section class="tip"><span>↳</span><p id="tip">As placas na estrada levam a outros lugares. Não precisa comprar passagem.</p></section>
+      </aside>
+    </div>
+    <footer><span><i class="save-dot"></i><span id="save-status">Progresso salvo neste navegador</span></span><button id="reset">Começar de novo</button><span>SEM PRESSA. SEM HORA PARA VOLTAR.</span></footer>
+  </main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modal" hidden><section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><button id="close-dialog" class="close" aria-label="Fechar">×</button><span class="eyebrow" id="dialog-eyebrow">VALE DO SOL</span><h2 id="dialog-title"></h2><p id="dialog-text"></p><div id="dialog-body"></div><div id="dialog-actions" class="dialog-actions"></div></section></div>
+</body>
+</html>
